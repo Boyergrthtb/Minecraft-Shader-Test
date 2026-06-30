@@ -21,7 +21,9 @@ screen.LIGHT_DEFAULT=Unknown Block Light
 option.SUN_INTENSITY=Sun Intensity
 option.MOON_INTENSITY=Moon Intensity
 option.SHADOW_STRENGTH=Directional Light
+option.MIN_LIGHT_LEVEL=Minimum Light Level
 option.AMBIENT_STRENGTH=Ambient Light
+option.SKY_AMBIENT=Sky Ambient Light
 option.BLOCK_LIGHT_RADIUS=Colored Light Spread
 
 option.TORCH_RED=Torch Red
@@ -88,6 +90,7 @@ value.TONEMAP.0=Off
 value.TONEMAP.1=Filmic
 value.TONEMAP.2=Cinematic
 
+comment.MIN_LIGHT_LEVEL=Absolute darkest brightness. Set to 0 for pitch-black caves and nights.
 comment.BLOCK_LIGHT_RADIUS=How far colored light spreads from torches, lanterns, lava, and other sources.
 comment.LIGHT_TORCH=Color and brightness for torches and wall torches.
 comment.LIGHT_LANTERN=Color and brightness for lanterns.

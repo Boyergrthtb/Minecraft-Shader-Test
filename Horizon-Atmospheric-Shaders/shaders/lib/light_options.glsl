@@ -2,7 +2,9 @@
 #define SUN_INTENSITY 1.0 // [0.5 0.75 1.0 1.25 1.5] Sunlight intensity
 #define MOON_INTENSITY 0.55 // [0.2 0.4 0.55 0.75 1.0] Moonlight intensity
 #define SHADOW_STRENGTH 0.85 // [0.7 0.85 0.95] Directional light strength
-#define AMBIENT_STRENGTH 0.18 // [0.14 0.18 0.22] Ambient fill light
+#define MIN_LIGHT_LEVEL 0.001 // [0.0 0.0005 0.001 0.002 0.005 0.01 0.02 0.05] Minimum brightness floor
+#define AMBIENT_STRENGTH 0.01 // [0.0 0.005 0.01 0.02 0.05 0.1] Ambient fill light
+#define SKY_AMBIENT 0.03 // [0.0 0.01 0.03 0.06 0.1 0.15] Sky ambient contribution
 #define BLOCK_LIGHT_RADIUS 1.0 // [0.5 0.75 1.0 1.25 1.5] Colored block light spread
 
 // Torch (warm)
