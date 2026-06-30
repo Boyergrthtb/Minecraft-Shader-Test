@@ -23,13 +23,13 @@ void main() {
 	scene = clamp(scene, 0.0, 1.0);
 #endif
 
-#if VIGNETTE
+#ifdef VIGNETTE
 	vec2 uv = texcoord * 2.0 - 1.0;
 	float vignette = 1.0 - dot(uv, uv) * 0.18;
 	scene *= vignette;
 #endif
 
-#if CHROMATIC_ABERRATION
+#ifdef CHROMATIC_ABERRATION
 	vec2 offset = (texcoord - 0.5) * 0.002;
 	scene.r = texture(colortex0, texcoord + offset).r;
 	scene.b = texture(colortex0, texcoord - offset).b;

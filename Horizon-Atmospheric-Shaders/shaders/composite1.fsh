@@ -18,8 +18,7 @@ float luminance(vec3 c) {
 void main() {
 	vec3 scene = texture(colortex0, texcoord).rgb;
 
-#if BLOOM
-	float lum = luminance(scene);
+#ifdef BLOOM
 	float threshold = 0.85;
 	vec3 bright = max(scene - threshold, vec3(0.0));
 	bloomExtract = vec4(bright, 1.0);

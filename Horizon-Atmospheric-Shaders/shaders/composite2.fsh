@@ -14,7 +14,8 @@ layout(location = 0) out vec4 blurH;
 void main() {
 	vec2 texel = vec2(1.0 / viewWidth, 1.0 / viewHeight);
 
-#if BLOOM && BLOOM_QUALITY >= 1
+#ifdef BLOOM
+#if BLOOM_QUALITY >= 1
 	vec3 sum = vec3(0.0);
 	sum += texture(colortex3, texcoord + texel * vec2(-2.0, 0.0)).rgb * 0.05;
 	sum += texture(colortex3, texcoord + texel * vec2(-1.0, 0.0)).rgb * 0.25;
@@ -24,5 +25,8 @@ void main() {
 	blurH = vec4(sum, 1.0);
 #else
 	blurH = texture(colortex3, texcoord);
+#endif
+#else
+	blurH = vec4(0.0);
 #endif
 }

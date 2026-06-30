@@ -1,37 +1,14 @@
-// Shader option uniforms (values set via shaders.properties)
+// Iris shader options (scanned from this file)
+// Must stay identical if duplicated elsewhere.
 
-#ifndef BLOOM
-#define BLOOM true
-#endif
+#define BLOOM // Enable bloom glow on bright areas
+#define VIGNETTE // Darken screen edges for a cinematic look
 
-#ifndef BLOOM_QUALITY
-#define BLOOM_QUALITY 1
-#endif
+//#define CHROMATIC_ABERRATION // Subtle color fringing at screen edges
 
-#ifndef VIGNETTE
-#define VIGNETTE true
-#endif
-
-#ifndef CHROMATIC_ABERRATION
-#define CHROMATIC_ABERRATION false
-#endif
-
-#ifndef COLOR_STRENGTH
-#define COLOR_STRENGTH 0.65
-#endif
-
-#ifndef SATURATION
-#define SATURATION 1.12
-#endif
-
-#ifndef SHADOW_STRENGTH
-#define SHADOW_STRENGTH 0.85
-#endif
-
-#ifndef AMBIENT_STRENGTH
-#define AMBIENT_STRENGTH 0.18
-#endif
-
-#ifndef TONEMAP
-#define TONEMAP 1
-#endif
+#define BLOOM_QUALITY 1 // [0 1 2] Bloom quality level
+#define COLOR_STRENGTH 0.65 // [0.45 0.65 0.8] Color grading strength
+#define SATURATION 1.12 // [1.0 1.12 1.2] Color saturation
+#define SHADOW_STRENGTH 0.85 // [0.7 0.85 0.95] Sunlight strength
+#define AMBIENT_STRENGTH 0.18 // [0.14 0.18 0.22] Ambient light level
+#define TONEMAP 1 // [0 1 2] Tonemapping mode

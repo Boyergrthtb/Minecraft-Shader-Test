@@ -1,4 +1,4 @@
-profile.profile=Performance Profile
+profile.comment=Performance profile presets
 profile.LOW=Low
 profile.MEDIUM=Medium
 profile.HIGH=High

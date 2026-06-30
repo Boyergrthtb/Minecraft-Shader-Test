@@ -16,7 +16,7 @@ void main() {
 	vec3 scene = texture(colortex0, texcoord).rgb;
 	vec3 bloom = texture(colortex4, texcoord).rgb;
 
-#if BLOOM
+#ifdef BLOOM
 	float bloomStrength = 0.35 + float(BLOOM_QUALITY) * 0.15;
 	scene += bloom * bloomStrength;
 #endif
