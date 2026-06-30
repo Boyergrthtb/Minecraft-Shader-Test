@@ -20,13 +20,11 @@ vec3 adjustSaturation(vec3 color, float amount) {
 }
 
 vec3 applyColorGrade(vec3 color, float strength, float saturation) {
-	vec3 graded = color;
-	graded.r = pow(graded.r, 0.95);
-	graded.g = pow(graded.g, 1.0);
-	graded.b = pow(graded.b, 1.05);
-	graded = mix(color, graded, strength);
-	graded = adjustSaturation(graded, saturation);
-	return graded;
+	if (strength < 0.01) {
+		return adjustSaturation(color, saturation);
+	}
+	vec3 graded = adjustSaturation(color, saturation);
+	return mix(color, graded, strength * 0.5);
 }
 
 float luminance(vec3 c) {

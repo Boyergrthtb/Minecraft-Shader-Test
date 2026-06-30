@@ -10,9 +10,8 @@
 #define COLOR_STRENGTH 0.5 // [0.45 0.65 0.8] Color grading strength
 #define SATURATION 1.0 // [0.9 1.0 1.05 1.12 1.2] Color saturation
 #define TONEMAP 0 // [0 1 2] Tonemapping mode
-#define MIN_LIGHT_LEVEL 0.028 // [0.0 0.015 0.028 0.04 0.06 0.08 0.1]
+#define MIN_LIGHT_LEVEL 0.0 // [0.0 0.0005 0.001 0.002 0.004 0.006 0.01]
 
-#include "/lib/color.glsl"
 #include "/lib/exposure.glsl"
 
 uniform sampler2D colortex0;
@@ -37,7 +36,7 @@ void main() {
 	scene = clamp(scene, 0.0, 1.0);
 #endif
 #else
-	scene = max(scene, vec3(MIN_LIGHT_LEVEL));
+	scene = applyExposure(scene);
 #if TONEMAP == 1
 	scene = acesTonemap(clamp(scene, 0.0, 2.5));
 #elif TONEMAP == 2

@@ -2,9 +2,9 @@
 #define SUN_INTENSITY 1.0 // [0.5 0.75 1.0 1.25 1.5] Sunlight intensity
 #define MOON_INTENSITY 0.55 // [0.2 0.4 0.55 0.75 1.0] Moonlight intensity
 #define SHADOW_STRENGTH 0.85 // [0.7 0.85 0.95] Directional light strength
-#define MIN_LIGHT_LEVEL 0.028 // [0.0 0.015 0.028 0.04 0.06 0.08 0.1] Minimum brightness floor
-#define AMBIENT_STRENGTH 0.012 // [0.0 0.005 0.01 0.02 0.05 0.1] Ambient fill light
-#define SKY_AMBIENT 0.015 // [0.0 0.01 0.015 0.03 0.06 0.1 0.15] Sky ambient contribution
+#define MIN_LIGHT_LEVEL 0.0 // [0.0 0.0005 0.001 0.002 0.004 0.006 0.01] Black crush threshold
+#define AMBIENT_STRENGTH 0.0 // [0.0 0.002 0.004 0.006 0.01 0.02] Ambient fill light
+#define SKY_AMBIENT 0.004 // [0.0 0.002 0.004 0.008 0.015 0.03] Sky ambient contribution
 #define LIGHT_DARKNESS 2.0 // [1.0 1.5 2.0 2.5 3.0 3.5 4.0 5.0] Darkness curve (higher = darker caves)
 #define BLOCK_LIGHT_RADIUS 0.85 // [0.5 0.75 0.85 1.0 1.25 1.5] Colored block light spread
 
@@ -82,7 +82,7 @@
 #define BRIGHT_INTENSITY 1.2 // [0.0 0.5 0.75 1.0 1.25 1.5]
 
 // Fallback for unknown block light
-#define DEFAULT_BLOCK_RED 1.0 // [0.0 0.25 0.5 0.75 1.0]
-#define DEFAULT_BLOCK_GREEN 0.80 // [0.0 0.25 0.5 0.75 1.0]
-#define DEFAULT_BLOCK_BLUE 0.55 // [0.0 0.25 0.5 0.75 1.0]
-#define DEFAULT_BLOCK_INTENSITY 0.85 // [0.0 0.5 0.75 1.0 1.25 1.5]
+#define DEFAULT_BLOCK_RED 0.92 // [0.0 0.25 0.5 0.75 1.0]
+#define DEFAULT_BLOCK_GREEN 0.93 // [0.0 0.25 0.5 0.75 1.0]
+#define DEFAULT_BLOCK_BLUE 0.96 // [0.0 0.25 0.5 0.75 1.0]
+#define DEFAULT_BLOCK_INTENSITY 0.65 // [0.0 0.5 0.75 1.0 1.25 1.5]

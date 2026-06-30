@@ -99,7 +99,7 @@ option.SUB_BLOOM_RADIUS=Tight Glow Radius
 option.BLOOM_CLAMP=Bloom Max Brightness
 comment.BLOOM_CLAMP=Limits bloom blowout so bright blocks do not wash the scene to white.
 comment.LIGHT_DARKNESS=Higher values make caves darker. Lower values reduce harsh light/shadow contrast on blocks.
-comment.MIN_LIGHT_LEVEL=Raises the darkest visible level. Prevents crushed pure-black surfaces while keeping caves dark.
+comment.MIN_LIGHT_LEVEL=Crushes near-black noise to true black. Set to 0 for pitch-black caves; raise slightly if dark areas look too crushed.
 comment.BLOOM_STRENGTH=Wide soft bloom on bright scene areas.
 comment.SUB_BLOOM_INTENSITY=Tight intense glow on torches, glowstone, lava, and other light blocks (Sildur-style).
 comment.SUB_BLOOM_RADIUS=How tight the glow sits around light sources. Lower = smaller, punchier halo.
