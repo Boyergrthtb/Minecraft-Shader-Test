@@ -2,8 +2,12 @@
 
 #define BLOOM // Enable bloom glow on bright areas
 
+//#define VIGNETTE // Darken screen edges for a cinematic look
+
 #define BLOOM_STRENGTH 0.45 // [0.15 0.3 0.45 0.6 0.75 1.0 1.5]
 #define BLOOM_CLAMP 0.22 // [0.1 0.15 0.22 0.3 0.4 0.55]
+
+#include "/lib/color.glsl"
 
 uniform sampler2D colortex0;
 uniform sampler2D colortex4;
@@ -21,8 +25,7 @@ void main() {
 	vec3 mainBloom = texture(colortex4, texcoord).rgb;
 	vec3 subBloom = texture(colortex7, texcoord).rgb;
 	vec3 bloomAdd = mainBloom * BLOOM_STRENGTH + subBloom;
-	bloomAdd = min(bloomAdd, vec3(BLOOM_CLAMP));
-	scene += bloomAdd;
+	scene = applyLocalBloom(scene, bloomAdd, BLOOM_CLAMP);
 #endif
 
 	color = vec4(scene, 1.0);

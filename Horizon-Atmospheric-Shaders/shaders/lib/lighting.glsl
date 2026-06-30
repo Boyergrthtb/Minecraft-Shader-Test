@@ -60,5 +60,5 @@ vec3 applyCustomLighting(vec3 albedo, vec3 normal, vec2 lmcoord, vec3 sunDir, ve
 	vec3 totalLight = skyLighting + neutralBlockFill(lmcoord.x);
 	vec3 lit = albedo * totalLight;
 	lit = applyEmitterSurface(lit, localEmission);
-	return applyExposure(lit);
+	return crushToBlack(lit);
 }

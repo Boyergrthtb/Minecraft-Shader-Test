@@ -1,4 +1,4 @@
-// Color grading and tonemapping utilities
+// Post-process color utilities — fixed output, no view-dependent exposure
 
 vec3 acesTonemap(vec3 x) {
 	const float a = 2.51;
@@ -7,11 +7,6 @@ vec3 acesTonemap(vec3 x) {
 	const float d = 0.59;
 	const float e = 0.14;
 	return clamp((x * (a * x + b)) / (x * (c * x + d) + e), 0.0, 1.0);
-}
-
-vec3 acesTonemapPreserveBlacks(vec3 x, float blackFloor) {
-	vec3 lifted = max(x - vec3(blackFloor), vec3(0.0));
-	return acesTonemap(lifted * 1.05);
 }
 
 vec3 adjustSaturation(vec3 color, float amount) {
@@ -36,6 +31,14 @@ vec3 extractBloom(vec3 color, float threshold) {
 	float knee = smoothstep(threshold - 0.12, threshold + 0.04, lum);
 	vec3 bright = max(color - vec3(threshold - 0.08), vec3(0.0));
 	return bright * knee;
+}
+
+// Bloom only affects pixels that are already locally bright — prevents dark areas
+// from washing out when bright objects (sky, torches) are elsewhere on screen.
+vec3 applyLocalBloom(vec3 scene, vec3 bloomAdd, float clampMax) {
+	bloomAdd = min(bloomAdd, vec3(clampMax));
+	float localMask = smoothstep(0.02, 0.22, luminance(scene));
+	return scene + bloomAdd * localMask;
 }
 
 vec3 tightViewBloom(sampler2D viewTex, vec2 uv, vec2 texel, float radius, float intensity) {
