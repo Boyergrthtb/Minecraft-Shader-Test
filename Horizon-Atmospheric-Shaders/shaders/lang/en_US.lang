@@ -1,0 +1,31 @@
+profile.profile=Performance Profile
+profile.LOW=Low
+profile.MEDIUM=Medium
+profile.HIGH=High
+
+screen.LIGHTING=Lighting
+screen.COLOR=Color
+screen.EFFECTS=Effects
+
+option.BLOOM=Bloom
+option.VIGNETTE=Vignette
+option.CHROMATIC_ABERRATION=Chromatic Aberration
+
+option.BLOOM_QUALITY=Bloom Quality
+value.BLOOM_QUALITY.0=Soft
+value.BLOOM_QUALITY.1=Balanced
+value.BLOOM_QUALITY.2=Intense
+
+option.COLOR_STRENGTH=Color Grading
+option.SATURATION=Saturation
+option.SHADOW_STRENGTH=Sunlight Strength
+option.AMBIENT_STRENGTH=Ambient Light
+
+option.TONEMAP=Tonemapping
+value.TONEMAP.0=Off
+value.TONEMAP.1=Filmic
+value.TONEMAP.2=Cinematic
+
+comment.BLOOM=Adds a soft glow to bright areas of the scene.
+comment.VIGNETTE=Darkens the edges of the screen for a cinematic look.
+comment.CHROMATIC_ABERRATION=Subtle color fringing at screen edges.
