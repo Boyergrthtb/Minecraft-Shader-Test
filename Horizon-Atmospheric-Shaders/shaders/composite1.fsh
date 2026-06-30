@@ -6,9 +6,9 @@
 //#define CHROMATIC_ABERRATION // Subtle color fringing at screen edges
 
 #define BLOOM_QUALITY 1 // [0 1 2] Bloom quality level
-#define COLOR_STRENGTH 0.65 // [0.45 0.65 0.8] Color grading strength
-#define SATURATION 1.12 // [1.0 1.12 1.2] Color saturation
-#define TONEMAP 1 // [0 1 2] Tonemapping mode
+#define COLOR_STRENGTH 0.5 // [0.45 0.65 0.8] Color grading strength
+#define SATURATION 1.0 // [0.9 1.0 1.05 1.12 1.2] Color saturation
+#define TONEMAP 0 // [0 1 2] Tonemapping mode
 
 #include "/lib/light_options.glsl"
 #include "/lib/lighting.glsl"

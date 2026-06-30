@@ -2,7 +2,8 @@
 
 #define BLOOM // Enable bloom glow on bright areas
 
-#define BLOOM_STRENGTH 2.25 // [0.5 1.0 1.5 2.0 2.25 3.0 4.0]
+#define BLOOM_STRENGTH 1.0 // [0.25 0.5 0.75 1.0 1.5 2.0 2.5 3.0]
+#define BLOOM_CLAMP 0.45 // [0.2 0.3 0.45 0.6 0.8 1.0]
 
 uniform sampler2D colortex0;
 uniform sampler2D colortex4;
@@ -19,8 +20,9 @@ void main() {
 #ifdef BLOOM
 	vec3 mainBloom = texture(colortex4, texcoord).rgb;
 	vec3 subBloom = texture(colortex7, texcoord).rgb;
-	scene += mainBloom * BLOOM_STRENGTH;
-	scene += subBloom;
+	vec3 bloomAdd = mainBloom * BLOOM_STRENGTH + subBloom;
+	bloomAdd = min(bloomAdd, vec3(BLOOM_CLAMP));
+	scene += bloomAdd;
 #endif
 
 	color = vec4(scene, 1.0);

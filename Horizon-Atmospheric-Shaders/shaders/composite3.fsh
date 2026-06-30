@@ -2,8 +2,8 @@
 
 #define BLOOM // Enable bloom glow on bright areas
 
-#define SUB_BLOOM_INTENSITY 4.5 // [1.0 2.0 3.0 4.0 4.5 6.0 8.0]
-#define SUB_BLOOM_RADIUS 1.25 // [0.5 0.75 1.0 1.25 1.5 2.0 3.0]
+#define SUB_BLOOM_INTENSITY 1.5 // [0.5 1.0 1.5 2.0 3.0 4.0 6.0]
+#define SUB_BLOOM_RADIUS 1.0 // [0.5 0.75 1.0 1.25 1.5 2.0 3.0]
 
 #include "/lib/color.glsl"
 

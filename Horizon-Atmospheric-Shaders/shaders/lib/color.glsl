@@ -59,6 +59,6 @@ vec3 tightSubBloom(sampler2D emissionTex, vec2 uv, vec2 texel, float radius, flo
 	}
 
 	glow /= max(wsum, 0.001);
-	glow = pow(max(glow, vec3(0.0)), vec3(0.82));
-	return glow * intensity;
+	glow = pow(max(glow, vec3(0.0)), vec3(0.9));
+	return min(glow * intensity, vec3(0.55));
 }

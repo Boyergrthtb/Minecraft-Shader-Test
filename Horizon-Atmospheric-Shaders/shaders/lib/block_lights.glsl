@@ -78,6 +78,6 @@ vec3 computeBlockEmission(int blockId, float blockLightLevel) {
 		}
 	}
 	float strength = clamp(blockLightLevel, 0.0, 1.0);
-	strength = strength * strength;
-	return emitter * strength * 2.0;
+	strength = sqrt(strength);
+	return min(emitter * strength, vec3(0.75));
 }
