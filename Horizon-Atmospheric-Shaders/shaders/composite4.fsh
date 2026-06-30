@@ -4,6 +4,8 @@
 
 #define BLOOM_QUALITY 1 // [0 1 2] Bloom quality level
 
+#include "/lib/light_options.glsl"
+
 uniform sampler2D colortex3;
 uniform float viewWidth;
 uniform float viewHeight;
@@ -14,7 +16,7 @@ in vec2 texcoord;
 layout(location = 0) out vec4 blurPass;
 
 void main() {
-	vec2 texel = vec2(1.0 / viewWidth, 1.0 / viewHeight);
+	vec2 texel = vec2(1.0 / viewWidth, 1.0 / viewHeight) * BLOCK_LIGHT_RADIUS;
 
 #ifdef BLOOM
 #if BLOOM_QUALITY >= 2

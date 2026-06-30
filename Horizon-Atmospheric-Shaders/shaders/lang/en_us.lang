@@ -24,7 +24,8 @@ option.SHADOW_STRENGTH=Directional Light
 option.MIN_LIGHT_LEVEL=Minimum Light Level
 option.AMBIENT_STRENGTH=Ambient Light
 option.SKY_AMBIENT=Sky Ambient Light
-option.BLOCK_LIGHT_RADIUS=Colored Light Spread
+option.BLOCK_LIGHT_RADIUS=View Bloom Spread
+option.EMISSION_SURFACE=Emitter Surface Brightness
 
 option.TORCH_RED=Torch Red
 option.TORCH_GREEN=Torch Green
@@ -100,9 +101,11 @@ option.BLOOM_CLAMP=Bloom Max Brightness
 comment.BLOOM_CLAMP=Limits bloom blowout so bright blocks do not wash the scene to white.
 comment.LIGHT_DARKNESS=Higher values make caves darker. Lower values reduce harsh light/shadow contrast on blocks.
 comment.MIN_LIGHT_LEVEL=Crushes near-black noise to true black. Set to 0 for pitch-black caves; raise slightly if dark areas look too crushed.
-comment.BLOOM_STRENGTH=Wide soft bloom on bright scene areas.
-comment.SUB_BLOOM_INTENSITY=Tight intense glow on torches, glowstone, lava, and other light blocks (Sildur-style).
-comment.SUB_BLOOM_RADIUS=How tight the glow sits around light sources. Lower = smaller, punchier halo.
+comment.BLOOM_STRENGTH=Wide soft bloom applied to the rendered view (screen-space), not block surfaces.
+comment.SUB_BLOOM_INTENSITY=Tight screen-space glow around bright pixels in the view.
+comment.SUB_BLOOM_RADIUS=How wide the tight view glow spreads in pixels.
+comment.BLOCK_LIGHT_RADIUS=How far the main view bloom blurs across the screen.
+comment.EMISSION_SURFACE=Brightness of colored light on emitter block texels only (no neighbor spill).
 comment.LIGHT_TORCH=Color and brightness for torches and wall torches.
 comment.LIGHT_LANTERN=Color and brightness for lanterns.
 comment.LIGHT_SOUL=Color and brightness for soul torches and soul fire.

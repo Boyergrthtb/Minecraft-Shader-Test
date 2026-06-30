@@ -33,12 +33,12 @@ float luminance(vec3 c) {
 
 vec3 extractBloom(vec3 color, float threshold) {
 	float lum = luminance(color);
-	float knee = smoothstep(threshold - 0.15, threshold + 0.05, lum);
-	vec3 bright = max(color - vec3(threshold - 0.1), vec3(0.0));
+	float knee = smoothstep(threshold - 0.12, threshold + 0.04, lum);
+	vec3 bright = max(color - vec3(threshold - 0.08), vec3(0.0));
 	return bright * knee;
 }
 
-vec3 tightSubBloom(sampler2D emissionTex, vec2 uv, vec2 texel, float radius, float intensity) {
+vec3 tightViewBloom(sampler2D viewTex, vec2 uv, vec2 texel, float radius, float intensity) {
 	vec2 px = texel * radius;
 	vec3 glow = vec3(0.0);
 	float wsum = 0.0;
@@ -47,16 +47,16 @@ vec3 tightSubBloom(sampler2D emissionTex, vec2 uv, vec2 texel, float radius, flo
 		for (int y = -2; y <= 2; y++) {
 			vec2 offset = px * vec2(float(x), float(y));
 			float dist = length(vec2(x, y));
-			float w = exp(-dist * dist / 1.8);
-			vec3 sampleColor = texture(emissionTex, uv + offset).rgb;
-			float bright = max(max(sampleColor.r, sampleColor.g), sampleColor.b);
-			sampleColor *= smoothstep(0.02, 0.2, bright);
+			float w = exp(-dist * dist / 2.0);
+			vec3 sampleColor = texture(viewTex, uv + offset).rgb;
+			float lum = luminance(sampleColor);
+			sampleColor = extractBloom(sampleColor, 0.35);
+			sampleColor *= smoothstep(0.04, 0.22, lum);
 			glow += sampleColor * w;
 			wsum += w;
 		}
 	}
 
 	glow /= max(wsum, 0.001);
-	glow = pow(max(glow, vec3(0.0)), vec3(0.9));
-	return min(glow * intensity, vec3(0.55));
+	return min(glow * intensity, vec3(0.22));
 }

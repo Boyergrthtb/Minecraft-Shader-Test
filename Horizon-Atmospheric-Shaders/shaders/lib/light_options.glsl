@@ -6,14 +6,15 @@
 #define AMBIENT_STRENGTH 0.0 // [0.0 0.002 0.004 0.006 0.01 0.02] Ambient fill light
 #define SKY_AMBIENT 0.004 // [0.0 0.002 0.004 0.008 0.015 0.03] Sky ambient contribution
 #define LIGHT_DARKNESS 2.0 // [1.0 1.5 2.0 2.5 3.0 3.5 4.0 5.0] Darkness curve (higher = darker caves)
-#define BLOCK_LIGHT_RADIUS 0.85 // [0.5 0.75 0.85 1.0 1.25 1.5] Colored block light spread
+#define EMISSION_SURFACE 0.55 // [0.25 0.4 0.55 0.7 0.85] Emitter block surface brightness
+#define BLOCK_LIGHT_RADIUS 1.0 // [0.5 0.75 1.0 1.25 1.5 2.0] View bloom blur spread
 
-// Bloom
-#define BLOOM_STRENGTH 1.0 // [0.25 0.5 0.75 1.0 1.5 2.0 2.5 3.0] Main bloom intensity
-#define BLOOM_THRESHOLD 0.65 // [0.35 0.45 0.55 0.65 0.75 0.85] Main bloom threshold
-#define SUB_BLOOM_INTENSITY 1.5 // [0.5 1.0 1.5 2.0 3.0 4.0 6.0] Tight glow on light blocks
-#define SUB_BLOOM_RADIUS 1.0 // [0.5 0.75 1.0 1.25 1.5 2.0 3.0] Tight glow radius (pixels)
-#define BLOOM_CLAMP 0.45 // [0.2 0.3 0.45 0.6 0.8 1.0] Max bloom contribution per channel
+// Bloom (screen-space on the rendered view, not block lighting)
+#define BLOOM_STRENGTH 0.45 // [0.15 0.3 0.45 0.6 0.75 1.0 1.5] Main bloom intensity
+#define BLOOM_THRESHOLD 0.78 // [0.55 0.65 0.72 0.78 0.85 0.92] Main bloom threshold
+#define SUB_BLOOM_INTENSITY 0.6 // [0.25 0.5 0.75 1.0 1.5 2.0 3.0] Tight view glow on bright pixels
+#define SUB_BLOOM_RADIUS 1.25 // [0.5 0.75 1.0 1.25 1.5 2.0 3.0] Tight view glow radius (pixels)
+#define BLOOM_CLAMP 0.22 // [0.1 0.15 0.22 0.3 0.4 0.55] Max bloom contribution per channel
 
 // Torch (warm)
 #define TORCH_RED 1.0 // [0.0 0.25 0.5 0.75 1.0]

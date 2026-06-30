@@ -65,7 +65,7 @@ vec3 getEmitterColorForBlock(int blockId) {
 }
 
 vec3 getDefaultBlockLightColor() {
-	return makeLightColor(DEFAULT_BLOCK_RED, DEFAULT_BLOCK_GREEN, DEFAULT_BLOCK_BLUE, DEFAULT_BLOCK_INTENSITY);
+	return vec3(0.16);
 }
 
 vec3 computeBlockEmission(int blockId, float blockLightLevel) {
@@ -79,5 +79,5 @@ vec3 computeBlockEmission(int blockId, float blockLightLevel) {
 	}
 	float strength = clamp(blockLightLevel, 0.0, 1.0);
 	strength = sqrt(strength);
-	return min(emitter * strength, vec3(0.75));
+	return min(emitter * strength, vec3(0.22));
 }

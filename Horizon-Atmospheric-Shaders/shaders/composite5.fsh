@@ -2,8 +2,8 @@
 
 #define BLOOM // Enable bloom glow on bright areas
 
-#define BLOOM_STRENGTH 1.0 // [0.25 0.5 0.75 1.0 1.5 2.0 2.5 3.0]
-#define BLOOM_CLAMP 0.45 // [0.2 0.3 0.45 0.6 0.8 1.0]
+#define BLOOM_STRENGTH 0.45 // [0.15 0.3 0.45 0.6 0.75 1.0 1.5]
+#define BLOOM_CLAMP 0.22 // [0.1 0.15 0.22 0.3 0.4 0.55]
 
 uniform sampler2D colortex0;
 uniform sampler2D colortex4;

@@ -17,7 +17,7 @@
 uniform sampler2D colortex0;
 uniform sampler2D colortex1;
 uniform sampler2D colortex2;
-uniform sampler2D colortex6;
+uniform sampler2D colortex5;
 uniform vec3 sunPosition;
 uniform vec3 moonPosition;
 uniform vec3 fogColor;
@@ -32,6 +32,7 @@ void main() {
 	vec4 scene = texture(colortex0, texcoord);
 	vec4 gbuffer = texture(colortex1, texcoord);
 	vec3 encodedNormal = texture(colortex2, texcoord).rgb;
+	vec3 localEmission = texture(colortex5, texcoord).rgb;
 
 	vec3 result;
 	if (gbuffer.a < 0.5) {
@@ -40,7 +41,7 @@ void main() {
 		vec3 normal = decodeNormal(encodedNormal);
 		vec3 sunDir = normalize(sunPosition);
 		vec3 moonDir = normalize(moonPosition);
-		result = applyCustomLighting(scene.rgb, normal, gbuffer.rg, sunDir, moonDir, colortex6, texcoord);
+		result = applyCustomLighting(scene.rgb, normal, gbuffer.rg, sunDir, moonDir, localEmission);
 	}
 
 	result = applyColorGrade(result, COLOR_STRENGTH, SATURATION);

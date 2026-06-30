@@ -17,28 +17,32 @@ float diffuseTerm(vec3 normal, vec3 lightDir) {
 
 vec3 calculateSunColor(vec3 sunDir) {
 	float dayFactor = smoothstep(-0.1, 0.35, sunDir.y);
-	vec3 dayColor = vec3(1.0, 0.98, 0.95);
-	vec3 nightColor = vec3(0.55, 0.58, 0.65);
+	vec3 dayColor = vec3(1.0);
+	vec3 nightColor = vec3(0.55, 0.57, 0.60);
 	return mix(nightColor, dayColor, dayFactor);
 }
 
 vec3 calculateMoonColor(vec3 moonDir) {
 	float nightFactor = smoothstep(-0.05, 0.25, moonDir.y);
-	return mix(vec3(0.15, 0.16, 0.20), vec3(0.45, 0.50, 0.62), nightFactor);
+	return mix(vec3(0.15, 0.16, 0.18), vec3(0.42, 0.46, 0.55), nightFactor);
 }
 
-vec3 sampleColoredBlockLight(sampler2D blurredEmission, vec2 uv, float blockLightLevel) {
+vec3 neutralBlockFill(float blockLightLevel) {
 	float curved = remapLightLevel(blockLightLevel);
-	if (curved < 0.008) {
-		return vec3(0.0);
-	}
-
-	vec3 spill = texture(blurredEmission, uv).rgb;
-	spill *= step(0.01, max(max(spill.r, spill.g), spill.b));
-	return min(spill * curved * BLOCK_LIGHT_RADIUS, vec3(0.55));
+	return vec3(curved * 0.42);
 }
 
-vec3 applyCustomLighting(vec3 albedo, vec3 normal, vec2 lmcoord, vec3 sunDir, vec3 moonDir, sampler2D blurredEmission, vec2 texcoord) {
+vec3 applyEmitterSurface(vec3 baseLit, vec3 emission) {
+	float emit = dot(emission, vec3(0.2126, 0.7152, 0.0722));
+	if (emit < 0.008) {
+		return baseLit;
+	}
+	vec3 tinted = emission * EMISSION_SURFACE;
+	float blend = clamp(emit * 1.5, 0.0, 0.55);
+	return mix(baseLit, tinted, blend);
+}
+
+vec3 applyCustomLighting(vec3 albedo, vec3 normal, vec2 lmcoord, vec3 sunDir, vec3 moonDir, vec3 localEmission) {
 	float skyLight = remapLightLevel(clamp(lmcoord.y, 0.0, 1.0));
 	float blockLight = remapLightLevel(clamp(lmcoord.x, 0.0, 1.0));
 
@@ -50,12 +54,11 @@ vec3 applyCustomLighting(vec3 albedo, vec3 normal, vec2 lmcoord, vec3 sunDir, ve
 
 	float lightPresence = max(skyLight, blockLight);
 	float ambientGate = smoothstep(0.0, 0.04, lightPresence);
-	float neutralAmbient = AMBIENT_STRENGTH * ambientGate + skyLight * SKY_AMBIENT + blockLight * 0.02;
+	float neutralAmbient = AMBIENT_STRENGTH * ambientGate + skyLight * SKY_AMBIENT;
 	vec3 skyLighting = sunColor * sunDiffuse + moonColor * moonDiffuse + vec3(neutralAmbient);
 
-	vec3 blockLighting = sampleColoredBlockLight(blurredEmission, texcoord, lmcoord.x);
-
-	vec3 totalLight = skyLighting + blockLighting;
+	vec3 totalLight = skyLighting + neutralBlockFill(lmcoord.x);
 	vec3 lit = albedo * totalLight;
+	lit = applyEmitterSurface(lit, localEmission);
 	return applyExposure(lit);
 }

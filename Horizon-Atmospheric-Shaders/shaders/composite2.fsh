@@ -3,8 +3,8 @@
 #define BLOOM // Enable bloom glow on bright areas
 
 #define BLOOM_QUALITY 1 // [0 1 2] Bloom quality level
-#define BLOOM_STRENGTH 1.0 // [0.25 0.5 0.75 1.0 1.5 2.0 2.5 3.0]
-#define BLOOM_THRESHOLD 0.65 // [0.35 0.45 0.55 0.65 0.75 0.85]
+#define BLOOM_STRENGTH 0.45 // [0.15 0.3 0.45 0.6 0.75 1.0 1.5]
+#define BLOOM_THRESHOLD 0.78 // [0.55 0.65 0.72 0.78 0.85 0.92]
 
 #include "/lib/color.glsl"
 
