@@ -17,5 +17,5 @@ void main() {
 	if (color.a < alphaTestRef) {
 		discard;
 	}
-	writeGbufferData(normal, lmcoord);
+	writeGbufferData(normal, lmcoord, vec3(0.0));
 }

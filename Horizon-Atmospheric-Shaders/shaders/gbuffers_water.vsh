@@ -1,11 +1,14 @@
 #version 330 compatibility
 
+attribute vec4 mc_Entity;
+
 uniform mat4 gbufferModelViewInverse;
 
 out vec2 lmcoord;
 out vec2 texcoord;
 out vec4 glcolor;
 out vec3 normal;
+out float blockId;
 
 void main() {
 	gl_Position = ftransform();
@@ -15,4 +18,5 @@ void main() {
 	glcolor = gl_Color;
 	normal = gl_NormalMatrix * gl_Normal;
 	normal = mat3(gbufferModelViewInverse) * normal;
+	blockId = mc_Entity.x;
 }

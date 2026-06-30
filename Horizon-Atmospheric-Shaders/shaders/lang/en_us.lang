@@ -1,31 +1,95 @@
 profile.comment=Performance profile presets
-profile.LOW=Low
-profile.MEDIUM=Medium
-profile.HIGH=High
 
-screen.LIGHTING=Lighting
-screen.COLOR=Color
+screen.SKY_LIGHT=Sun and Moon
+screen.BLOCK_LIGHTS=Block Light Colors
+screen.COLOR=Color Grading
 screen.EFFECTS=Effects
+
+screen.LIGHT_TORCH=Torch
+screen.LIGHT_LANTERN=Lantern
+screen.LIGHT_SOUL=Soul Fire
+screen.LIGHT_GLOW=Glowstone
+screen.LIGHT_SEA=Sea Lantern
+screen.LIGHT_LAVA=Lava
+screen.LIGHT_FIRE=Fire
+screen.LIGHT_END=End Rod
+screen.LIGHT_REDSTONE=Redstone
+screen.LIGHT_AMETHYST=Amethyst
+screen.LIGHT_BRIGHT=Beacon and Froglight
+screen.LIGHT_DEFAULT=Unknown Block Light
+
+option.SUN_INTENSITY=Sun Intensity
+option.MOON_INTENSITY=Moon Intensity
+option.SHADOW_STRENGTH=Directional Light
+option.AMBIENT_STRENGTH=Ambient Light
+option.BLOCK_LIGHT_RADIUS=Colored Light Spread
+
+option.TORCH_RED=Torch Red
+option.TORCH_GREEN=Torch Green
+option.TORCH_BLUE=Torch Blue
+option.TORCH_INTENSITY=Torch Intensity
+option.LANTERN_RED=Lantern Red
+option.LANTERN_GREEN=Lantern Green
+option.LANTERN_BLUE=Lantern Blue
+option.LANTERN_INTENSITY=Lantern Intensity
+option.SOUL_RED=Soul Red
+option.SOUL_GREEN=Soul Green
+option.SOUL_BLUE=Soul Blue
+option.SOUL_INTENSITY=Soul Intensity
+option.GLOW_RED=Glowstone Red
+option.GLOW_GREEN=Glowstone Green
+option.GLOW_BLUE=Glowstone Blue
+option.GLOW_INTENSITY=Glowstone Intensity
+option.SEA_RED=Sea Light Red
+option.SEA_GREEN=Sea Light Green
+option.SEA_BLUE=Sea Light Blue
+option.SEA_INTENSITY=Sea Light Intensity
+option.LAVA_RED=Lava Red
+option.LAVA_GREEN=Lava Green
+option.LAVA_BLUE=Lava Blue
+option.LAVA_INTENSITY=Lava Intensity
+option.FIRE_RED=Fire Red
+option.FIRE_GREEN=Fire Green
+option.FIRE_BLUE=Fire Blue
+option.FIRE_INTENSITY=Fire Intensity
+option.END_RED=End Rod Red
+option.END_GREEN=End Rod Green
+option.END_BLUE=End Rod Blue
+option.END_INTENSITY=End Rod Intensity
+option.REDSTONE_RED=Redstone Red
+option.REDSTONE_GREEN=Redstone Green
+option.REDSTONE_BLUE=Redstone Blue
+option.REDSTONE_INTENSITY=Redstone Intensity
+option.AMETHYST_RED=Amethyst Red
+option.AMETHYST_GREEN=Amethyst Green
+option.AMETHYST_BLUE=Amethyst Blue
+option.AMETHYST_INTENSITY=Amethyst Intensity
+option.BRIGHT_RED=Bright Source Red
+option.BRIGHT_GREEN=Bright Source Green
+option.BRIGHT_BLUE=Bright Source Blue
+option.BRIGHT_INTENSITY=Bright Source Intensity
+option.DEFAULT_BLOCK_RED=Default Block Red
+option.DEFAULT_BLOCK_GREEN=Default Block Green
+option.DEFAULT_BLOCK_BLUE=Default Block Blue
+option.DEFAULT_BLOCK_INTENSITY=Default Block Intensity
 
 option.BLOOM=Bloom
 option.VIGNETTE=Vignette
 option.CHROMATIC_ABERRATION=Chromatic Aberration
-
 option.BLOOM_QUALITY=Bloom Quality
+option.COLOR_STRENGTH=Color Grading
+option.SATURATION=Saturation
+option.TONEMAP=Tonemapping
+
 value.BLOOM_QUALITY.0=Soft
 value.BLOOM_QUALITY.1=Balanced
 value.BLOOM_QUALITY.2=Intense
-
-option.COLOR_STRENGTH=Color Grading
-option.SATURATION=Saturation
-option.SHADOW_STRENGTH=Sunlight Strength
-option.AMBIENT_STRENGTH=Ambient Light
-
-option.TONEMAP=Tonemapping
 value.TONEMAP.0=Off
 value.TONEMAP.1=Filmic
 value.TONEMAP.2=Cinematic
 
-comment.BLOOM=Adds a soft glow to bright areas of the scene.
-comment.VIGNETTE=Darkens the edges of the screen for a cinematic look.
-comment.CHROMATIC_ABERRATION=Subtle color fringing at screen edges.
+comment.BLOCK_LIGHT_RADIUS=How far colored light spreads from torches, lanterns, lava, and other sources.
+comment.LIGHT_TORCH=Color and brightness for torches and wall torches.
+comment.LIGHT_LANTERN=Color and brightness for lanterns.
+comment.LIGHT_SOUL=Color and brightness for soul torches and soul fire.
+comment.LIGHT_LAVA=Color and brightness for lava and magma blocks.

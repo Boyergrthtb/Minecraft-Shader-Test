@@ -1,17 +1,18 @@
-Horizon Atmospheric Shaders v1.0.0
+Horizon Atmospheric Shaders v2.0.0
 Minecraft Java Edition 26.2
 Iris + Sodium compatible
 
 Features:
-- Custom directional lighting with warm daylight and cool moonlight
-- Color grading and ACES filmic tonemapping
-- Optional bloom, vignette, and chromatic aberration
-- Three performance profiles: Low, Medium, High
+- Directional sunlight and moonlight
+- Multi-colored block lighting (torches, lanterns, lava, glowstone, etc.)
+- Per-source RGB color and intensity in Shader Pack Settings
+- Color grading, bloom, and tonemapping
 
 Installation:
 1. Install Fabric/NeoForge with Sodium and Iris for MC 26.2
 2. Copy this zip to .minecraft/shaderpacks/
-3. Select "Horizon Atmospheric Shaders" in Video Settings > Shader Packs
-4. Adjust settings via Shader Pack Settings in Iris
+3. Select the pack in Video Settings > Shader Packs
+4. Tune block light colors under Shader Pack Settings > Block Light Colors
 
-Credits: Built on shaderLABS Base-330 template.
+Download latest:
+https://github.com/Boyergrthtb/Minecraft-Shader-Test/raw/cursor/horizon-shader-pack-710b/Horizon-Atmospheric-Shaders-26.2.zip

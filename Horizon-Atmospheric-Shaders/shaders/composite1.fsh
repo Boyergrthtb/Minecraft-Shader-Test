@@ -1,28 +1,52 @@
 #version 330 compatibility
 
-#include "/lib/settings.glsl"
+#define BLOOM // Enable bloom glow on bright areas
+#define VIGNETTE // Darken screen edges for a cinematic look
+
+//#define CHROMATIC_ABERRATION // Subtle color fringing at screen edges
+
+#define BLOOM_QUALITY 1 // [0 1 2] Bloom quality level
+#define COLOR_STRENGTH 0.65 // [0.45 0.65 0.8] Color grading strength
+#define SATURATION 1.12 // [1.0 1.12 1.2] Color saturation
+#define TONEMAP 1 // [0 1 2] Tonemapping mode
+
+#include "/lib/light_options.glsl"
+#include "/lib/lighting.glsl"
+#include "/lib/color.glsl"
 
 uniform sampler2D colortex0;
-uniform float viewWidth;
-uniform float viewHeight;
+uniform sampler2D colortex1;
+uniform sampler2D colortex2;
+uniform sampler2D colortex6;
+uniform vec3 sunPosition;
+uniform vec3 moonPosition;
+uniform vec3 fogColor;
+uniform float rainStrength;
 
 in vec2 texcoord;
 
-/* RENDERTARGETS: 3 */
-layout(location = 0) out vec4 bloomExtract;
-
-float luminance(vec3 c) {
-	return dot(c, vec3(0.2126, 0.7152, 0.0722));
-}
+/* RENDERTARGETS: 0 */
+layout(location = 0) out vec4 color;
 
 void main() {
-	vec3 scene = texture(colortex0, texcoord).rgb;
+	vec4 scene = texture(colortex0, texcoord);
+	vec4 gbuffer = texture(colortex1, texcoord);
+	vec3 encodedNormal = texture(colortex2, texcoord).rgb;
 
-#ifdef BLOOM
-	float threshold = 0.85;
-	vec3 bright = max(scene - threshold, vec3(0.0));
-	bloomExtract = vec4(bright, 1.0);
-#else
-	bloomExtract = vec4(0.0);
-#endif
+	vec3 result;
+	if (gbuffer.a < 0.5) {
+		result = scene.rgb;
+	} else {
+		vec3 normal = decodeNormal(encodedNormal);
+		vec3 sunDir = normalize(sunPosition);
+		vec3 moonDir = normalize(moonPosition);
+		result = applyCustomLighting(scene.rgb, normal, gbuffer.rg, sunDir, moonDir, colortex6, texcoord);
+	}
+
+	result = applyColorGrade(result, COLOR_STRENGTH, SATURATION);
+
+	float fogAmount = rainStrength * 0.15;
+	result = mix(result, fogColor, fogAmount);
+
+	color = vec4(result, scene.a);
 }
