@@ -2,10 +2,17 @@
 #define SUN_INTENSITY 1.0 // [0.5 0.75 1.0 1.25 1.5] Sunlight intensity
 #define MOON_INTENSITY 0.55 // [0.2 0.4 0.55 0.75 1.0] Moonlight intensity
 #define SHADOW_STRENGTH 0.85 // [0.7 0.85 0.95] Directional light strength
-#define MIN_LIGHT_LEVEL 0.001 // [0.0 0.0005 0.001 0.002 0.005 0.01 0.02 0.05] Minimum brightness floor
-#define AMBIENT_STRENGTH 0.01 // [0.0 0.005 0.01 0.02 0.05 0.1] Ambient fill light
-#define SKY_AMBIENT 0.03 // [0.0 0.01 0.03 0.06 0.1 0.15] Sky ambient contribution
+#define MIN_LIGHT_LEVEL 0.0 // [0.0 0.0005 0.001 0.002 0.005 0.01 0.02 0.05] Minimum brightness floor
+#define AMBIENT_STRENGTH 0.0 // [0.0 0.005 0.01 0.02 0.05 0.1] Ambient fill light
+#define SKY_AMBIENT 0.0 // [0.0 0.01 0.03 0.06 0.1 0.15] Sky ambient contribution
+#define LIGHT_DARKNESS 3.5 // [1.0 2.0 3.0 3.5 4.0 5.0 6.0] Darkness curve (higher = darker caves)
 #define BLOCK_LIGHT_RADIUS 1.0 // [0.5 0.75 1.0 1.25 1.5] Colored block light spread
+
+// Bloom
+#define BLOOM_STRENGTH 2.25 // [0.5 1.0 1.5 2.0 2.25 3.0 4.0] Main bloom intensity
+#define BLOOM_THRESHOLD 0.55 // [0.35 0.45 0.55 0.65 0.75 0.85] Main bloom threshold
+#define SUB_BLOOM_INTENSITY 4.5 // [1.0 2.0 3.0 4.0 4.5 6.0 8.0] Tight glow on light blocks
+#define SUB_BLOOM_RADIUS 1.25 // [0.5 0.75 1.0 1.25 1.5 2.0 3.0] Tight glow radius (pixels)
 
 // Torch (warm)
 #define TORCH_RED 1.0 // [0.0 0.25 0.5 0.75 1.0]

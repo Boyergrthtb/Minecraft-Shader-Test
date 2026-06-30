@@ -3,10 +3,12 @@
 #define BLOOM // Enable bloom glow on bright areas
 
 #define BLOOM_QUALITY 1 // [0 1 2] Bloom quality level
+#define BLOOM_STRENGTH 2.25 // [0.5 1.0 1.5 2.0 2.25 3.0 4.0]
+#define BLOOM_THRESHOLD 0.55 // [0.35 0.45 0.55 0.65 0.75 0.85]
+
+#include "/lib/color.glsl"
 
 uniform sampler2D colortex0;
-uniform float viewWidth;
-uniform float viewHeight;
 
 in vec2 texcoord;
 
@@ -17,9 +19,7 @@ void main() {
 	vec3 scene = texture(colortex0, texcoord).rgb;
 
 #ifdef BLOOM
-	float threshold = 0.85;
-	vec3 bright = max(scene - threshold, vec3(0.0));
-	bloomExtract = vec4(bright, 1.0);
+	bloomExtract = vec4(extractBloom(scene, BLOOM_THRESHOLD), 1.0);
 #else
 	bloomExtract = vec4(0.0);
 #endif

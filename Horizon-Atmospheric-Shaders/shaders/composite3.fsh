@@ -2,33 +2,25 @@
 
 #define BLOOM // Enable bloom glow on bright areas
 
-#define BLOOM_QUALITY 1 // [0 1 2] Bloom quality level
+#define SUB_BLOOM_INTENSITY 4.5 // [1.0 2.0 3.0 4.0 4.5 6.0 8.0]
+#define SUB_BLOOM_RADIUS 1.25 // [0.5 0.75 1.0 1.25 1.5 2.0 3.0]
 
-uniform sampler2D colortex3;
+#include "/lib/color.glsl"
+
+uniform sampler2D colortex5;
 uniform float viewWidth;
 uniform float viewHeight;
 
 in vec2 texcoord;
 
-/* RENDERTARGETS: 4 */
-layout(location = 0) out vec4 blurH;
+/* RENDERTARGETS: 7 */
+layout(location = 0) out vec4 subBloom;
 
 void main() {
-	vec2 texel = vec2(1.0 / viewWidth, 1.0 / viewHeight);
-
 #ifdef BLOOM
-#if BLOOM_QUALITY >= 1
-	vec3 sum = vec3(0.0);
-	sum += texture(colortex3, texcoord + texel * vec2(-2.0, 0.0)).rgb * 0.05;
-	sum += texture(colortex3, texcoord + texel * vec2(-1.0, 0.0)).rgb * 0.25;
-	sum += texture(colortex3, texcoord).rgb * 0.40;
-	sum += texture(colortex3, texcoord + texel * vec2(1.0, 0.0)).rgb * 0.25;
-	sum += texture(colortex3, texcoord + texel * vec2(2.0, 0.0)).rgb * 0.05;
-	blurH = vec4(sum, 1.0);
+	vec2 texel = vec2(1.0 / viewWidth, 1.0 / viewHeight);
+	subBloom = vec4(tightSubBloom(colortex5, texcoord, texel, SUB_BLOOM_RADIUS, SUB_BLOOM_INTENSITY), 1.0);
 #else
-	blurH = texture(colortex3, texcoord);
-#endif
-#else
-	blurH = vec4(0.0);
+	subBloom = vec4(0.0);
 #endif
 }

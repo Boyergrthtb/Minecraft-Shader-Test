@@ -9,6 +9,7 @@
 #define COLOR_STRENGTH 0.65 // [0.45 0.65 0.8] Color grading strength
 #define SATURATION 1.12 // [1.0 1.12 1.2] Color saturation
 #define TONEMAP 1 // [0 1 2] Tonemapping mode
+#define MIN_LIGHT_LEVEL 0.0 // [0.0 0.0005 0.001 0.002 0.005 0.01 0.02 0.05]
 
 #include "/lib/color.glsl"
 
@@ -24,10 +25,12 @@ layout(location = 0) out vec4 color;
 void main() {
 	vec3 scene = texture(colortex0, texcoord).rgb;
 
+	scene = max(scene - vec3(MIN_LIGHT_LEVEL), vec3(0.0));
+
 #if TONEMAP == 1
-	scene = acesTonemap(scene * 1.1);
+	scene = acesTonemapPreserveBlacks(scene, MIN_LIGHT_LEVEL * 0.5);
 #elif TONEMAP == 2
-	scene = acesTonemap(scene * 1.35);
+	scene = acesTonemapPreserveBlacks(scene * 1.15, MIN_LIGHT_LEVEL * 0.35);
 #else
 	scene = clamp(scene, 0.0, 1.0);
 #endif

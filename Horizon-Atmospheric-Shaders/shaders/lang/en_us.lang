@@ -90,8 +90,17 @@ value.TONEMAP.0=Off
 value.TONEMAP.1=Filmic
 value.TONEMAP.2=Cinematic
 
+option.LIGHT_DARKNESS=Darkness Curve
+option.BLOOM_STRENGTH=Main Bloom Strength
+option.BLOOM_THRESHOLD=Main Bloom Threshold
+option.SUB_BLOOM_INTENSITY=Tight Glow Intensity
+option.SUB_BLOOM_RADIUS=Tight Glow Radius
+
+comment.LIGHT_DARKNESS=Higher values make caves and unlit areas much darker.
 comment.MIN_LIGHT_LEVEL=Absolute darkest brightness. Set to 0 for pitch-black caves and nights.
-comment.BLOCK_LIGHT_RADIUS=How far colored light spreads from torches, lanterns, lava, and other sources.
+comment.BLOOM_STRENGTH=Wide soft bloom on bright scene areas.
+comment.SUB_BLOOM_INTENSITY=Tight intense glow on torches, glowstone, lava, and other light blocks (Sildur-style).
+comment.SUB_BLOOM_RADIUS=How tight the glow sits around light sources. Lower = smaller, punchier halo.
 comment.LIGHT_TORCH=Color and brightness for torches and wall torches.
 comment.LIGHT_LANTERN=Color and brightness for lanterns.
 comment.LIGHT_SOUL=Color and brightness for soul torches and soul fire.
